@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "games": [
+    {
+      "id": "tap-counter",
+      "title": "Tap Counter",
+      "description": "Tap as fast as you can. Sample game that works fully offline.",
+      "version": "1.0.0",
+      "connectivity": "offline",
+      "url": "games/tap-counter-1.0.0.html",
+      "sha256": "f3d7d15d7556ab63f011ab04634d9059233e6b04e811f1cb9c95845807fd9b9f",
+      "sizeBytes": 2293
+    }
+  ]
+}

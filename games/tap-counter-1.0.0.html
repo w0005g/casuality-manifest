@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover + env(safe-area-inset-*) keeps content clear of notches (matters on iOS later) -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Tap Counter</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #14162b; color: #fff; font-family: system-ui, sans-serif; touch-action: manipulation; -webkit-user-select: none; user-select: none; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+  #score { font-size: 72px; font-weight: 700; }
+  #best { opacity: .7; }
+  button { font-size: 24px; padding: 18px 40px; border-radius: 16px; border: 0; background: #4f7cff; color: #fff; }
+</style>
+</head>
+<body>
+  <div id="score">0</div>
+  <div id="best">Best: 0</div>
+  <button id="tap">Tap!</button>
+<script>
+(function () {
+  // Storage: keys are namespaced by the portal, but we prefix anyway so the game also works standalone.
+  var KEY = 'tap-counter:best';
+  var score = 0, best = 0;
+  try { best = parseInt(localStorage.getItem(KEY) || '0', 10) || 0; } catch (e) {}
+  var scoreEl = document.getElementById('score'), bestEl = document.getElementById('best');
+  bestEl.textContent = 'Best: ' + best;
+
+  // Audio is created lazily inside a user gesture: required by iOS WebKit, good practice everywhere.
+  var ctx = null;
+  function beep() {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    if (!ctx) ctx = new AC();
+    if (ctx.state === 'suspended') ctx.resume();
+    var o = ctx.createOscillator(), g = ctx.createGain();
+    o.frequency.value = 440 + score * 8;
+    g.gain.value = 0.08;
+    o.connect(g); g.connect(ctx.destination);
+    o.start(); o.stop(ctx.currentTime + 0.06);
+  }
+
+  document.getElementById('tap').addEventListener('click', function () {
+    score++;
+    scoreEl.textContent = score;
+    beep();
+    if (score > best) {
+      best = score;
+      bestEl.textContent = 'Best: ' + best;
+      try { localStorage.setItem(KEY, String(best)); } catch (e) {}
+    }
+  });
+})();
+</script>
+</body>
+</html>

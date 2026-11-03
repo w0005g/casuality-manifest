@@ -1,0 +1,10 @@
+[
+  {
+    "id": "tap-counter",
+    "title": "Tap Counter",
+    "description": "Tap as fast as you can. Sample game that works fully offline.",
+    "version": "1.0.0",
+    "file": "games/tap-counter-1.0.0.html",
+    "connectivity": "offline"
+  }
+]
