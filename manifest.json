@@ -10,6 +10,56 @@
       "url": "games/tap-counter-1.0.0.html",
       "sha256": "f3d7d15d7556ab63f011ab04634d9059233e6b04e811f1cb9c95845807fd9b9f",
       "sizeBytes": 2293
+    },
+    {
+      "id": "memory-match",
+      "title": "Memory Match",
+      "description": "Flip cards and find all eight pairs in as few moves as you can.",
+      "version": "1.0.0",
+      "connectivity": "offline",
+      "url": "games/memory-match-1.0.0.html",
+      "sha256": "61bbfe75c3e1b83865fbb61b2eddc18132c6740db05f71cbd81055d11d655c0c",
+      "sizeBytes": 2271
+    },
+    {
+      "id": "reaction-timer",
+      "title": "Reaction Timer",
+      "description": "Wait for green, then tap. How fast are you?",
+      "version": "1.0.0",
+      "connectivity": "offline",
+      "url": "games/reaction-timer-1.0.0.html",
+      "sha256": "1af594a08182bc7ce3c7bc439d6b990c5de3b050ea17752c5304cdf4cbb864eb",
+      "sizeBytes": 1795
+    },
+    {
+      "id": "colour-guess",
+      "title": "Colour Guess",
+      "description": "Pick the hex code that matches the swatch. Build a streak.",
+      "version": "1.0.0",
+      "connectivity": "offline",
+      "url": "games/colour-guess-1.0.0.html",
+      "sha256": "237b943e102ce8cfbf4a52ca126075652dca1a93e5f08a76d5eacbc38c18e31a",
+      "sizeBytes": 1792
+    },
+    {
+      "id": "daily-zen",
+      "title": "Daily Zen",
+      "description": "Fetches a short thought from the internet each time you tap.",
+      "version": "1.0.0",
+      "connectivity": "online",
+      "url": "games/daily-zen-1.0.0.html",
+      "sha256": "927e31b49f2285884062a5ccd5415bd343cf9848328089812450dd033b48c1d0",
+      "sizeBytes": 1374
+    },
+    {
+      "id": "dice-roller",
+      "title": "Dice Roller",
+      "description": "Roll a die offline. A six shows a bonus line when you're online.",
+      "version": "1.0.0",
+      "connectivity": "optional",
+      "url": "games/dice-roller-1.0.0.html",
+      "sha256": "4b3e387e4ce1ccca2ac71d6dd0271dd80ea54f9218169b1d6ebc2043accc2927",
+      "sizeBytes": 1606
     }
   ]
 }

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Memory Match</title>
+<style>
+  html,body{margin:0;height:100%;background:#14162b;color:#fff;font-family:system-ui,sans-serif;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+  body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+  button{font-size:20px;padding:14px 28px;border-radius:14px;border:0;background:#4f7cff;color:#fff}
+  .dim{opacity:.7}
+</style></head><body>
+<style>#g{display:grid;grid-template-columns:repeat(4,64px);gap:8px}.c{width:64px;height:64px;font-size:30px;background:#2a2e57;border-radius:10px;display:flex;align-items:center;justify-content:center}.c.up{background:#4f7cff}.c.done{background:#2e8b57}</style>
+<div class="dim" id="m">Moves: 0 · Best: –</div><div id="g"></div><button id="r">New game</button>
+<script>
+(function(){
+var KEY='memory-match:best',E=['🐱','🐶','🦊','🐸','🐼','🦁','🐵','🐙'],g=document.getElementById('g'),m=document.getElementById('m');
+var best=null;try{best=parseInt(localStorage.getItem(KEY)||'',10)||null}catch(e){}
+var first=null,lock=false,moves=0,left=8;
+function label(){m.textContent='Moves: '+moves+' · Best: '+(best||'–')}
+function start(){g.innerHTML='';moves=0;left=8;first=null;lock=false;label();
+ var d=E.concat(E).sort(function(){return Math.random()-.5});
+ d.forEach(function(e){var c=document.createElement('div');c.className='c';c.textContent='?';c.onclick=function(){flip(c,e)};g.appendChild(c)})}
+function flip(c,e){if(lock||c.className!=='c')return;c.className='c up';c.textContent=e;
+ if(!first){first={c:c,e:e};return}
+ moves++;label();var a=first;first=null;
+ if(a.e===e){a.c.className=c.className='c done';if(--left===0){if(!best||moves<best){best=moves;try{localStorage.setItem(KEY,String(best))}catch(x){}}label()}}
+ else{lock=true;setTimeout(function(){a.c.className=c.className='c';a.c.textContent=c.textContent='?';lock=false},700)}}
+document.getElementById('r').onclick=start;start();
+})();
+</script></body></html>

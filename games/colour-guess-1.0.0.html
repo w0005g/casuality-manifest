@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Colour Guess</title>
+<style>
+  html,body{margin:0;height:100%;background:#14162b;color:#fff;font-family:system-ui,sans-serif;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+  body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+  button{font-size:20px;padding:14px 28px;border-radius:14px;border:0;background:#4f7cff;color:#fff}
+  .dim{opacity:.7}
+</style></head><body>
+<style>#sw{width:160px;height:160px;border-radius:20px}#o{display:flex;flex-direction:column;gap:10px}#o button{min-width:200px;font-family:monospace;background:#2a2e57}</style>
+<div id="sw"></div><div id="o"></div><div id="s" class="dim">Score: 0 · Best: 0</div>
+<script>
+(function(){
+var KEY='colour-guess:best',sc=0,best=0;try{best=parseInt(localStorage.getItem(KEY)||'0',10)||0}catch(e){}
+var sw=document.getElementById('sw'),o=document.getElementById('o'),s=document.getElementById('s');
+function hex(){return '#'+('000000'+Math.floor(Math.random()*16777216).toString(16)).slice(-6)}
+function lb(){s.textContent='Score: '+sc+' · Best: '+best}
+function round(){var ans=hex(),opts=[ans,hex(),hex()].sort(function(){return Math.random()-.5});
+ sw.style.background=ans;o.innerHTML='';
+ opts.forEach(function(h){var b=document.createElement('button');b.textContent=h;b.onclick=function(){
+  if(h===ans){sc++;if(sc>best){best=sc;try{localStorage.setItem(KEY,String(best))}catch(x){}}}else sc=0;lb();round()};o.appendChild(b)});lb()}
+round();
+})();
+</script></body></html>

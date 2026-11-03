@@ -6,5 +6,45 @@
     "version": "1.0.0",
     "file": "games/tap-counter-1.0.0.html",
     "connectivity": "offline"
+  },
+  {
+    "id": "memory-match",
+    "title": "Memory Match",
+    "description": "Flip cards and find all eight pairs in as few moves as you can.",
+    "version": "1.0.0",
+    "file": "games/memory-match-1.0.0.html",
+    "connectivity": "offline"
+  },
+  {
+    "id": "reaction-timer",
+    "title": "Reaction Timer",
+    "description": "Wait for green, then tap. How fast are you?",
+    "version": "1.0.0",
+    "file": "games/reaction-timer-1.0.0.html",
+    "connectivity": "offline"
+  },
+  {
+    "id": "colour-guess",
+    "title": "Colour Guess",
+    "description": "Pick the hex code that matches the swatch. Build a streak.",
+    "version": "1.0.0",
+    "file": "games/colour-guess-1.0.0.html",
+    "connectivity": "offline"
+  },
+  {
+    "id": "daily-zen",
+    "title": "Daily Zen",
+    "description": "Fetches a short thought from the internet each time you tap.",
+    "version": "1.0.0",
+    "file": "games/daily-zen-1.0.0.html",
+    "connectivity": "online"
+  },
+  {
+    "id": "dice-roller",
+    "title": "Dice Roller",
+    "description": "Roll a die offline. A six shows a bonus line when you're online.",
+    "version": "1.0.0",
+    "file": "games/dice-roller-1.0.0.html",
+    "connectivity": "optional"
   }
 ]
